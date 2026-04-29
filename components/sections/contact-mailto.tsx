@@ -1,5 +1,5 @@
 // TBD: Daryl confirm contact email
-const CONTACT_EMAIL = "hello@darylmacdonald.com";
+const CONTACT_EMAIL = "daryl@darylmacdonald.com";
 
 const subject = "Booking enquiry — darylmacdonald.com";
 const mailtoHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;

@@ -133,8 +133,8 @@ export function Contact() {
         <p className="text-xs text-[#9a8f7f] mt-8 leading-[1.6]">
           {/* TBD: Daryl confirm contact email */}
           Alternatively, email directly:{" "}
-          <a href="mailto:hello@darylmacdonald.com" className="text-accent-light">
-            hello@darylmacdonald.com
+          <a href="mailto:daryl@darylmacdonald.com" className="text-accent-light">
+            daryl@darylmacdonald.com
           </a>
           <br />
           Your message is confidential. Please don&apos;t share sensitive personal information
