@@ -1,5 +1,6 @@
-// TBD: Daryl confirm contact email
 const CONTACT_EMAIL = "daryl@darylmacdonald.com";
+const CONTACT_PHONE_DISPLAY = "07840 373448";
+const CONTACT_PHONE_HREF = "tel:+447840373448";
 
 const subject = "Booking enquiry — darylmacdonald.com";
 const mailtoHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
@@ -12,7 +13,7 @@ export function ContactMailto() {
     >
       <div className="max-w-[900px] mx-auto">
         <div className="text-[0.7rem] tracking-[0.25em] uppercase text-accent-light font-medium mb-6">
-          04 — Contact
+          Contact
         </div>
         <h2 className="font-serif font-normal tracking-tight leading-[1.1] text-[clamp(2rem,4vw,3rem)] mb-8 text-cream">
           Take the{" "}
@@ -34,11 +35,12 @@ export function ContactMailto() {
           Or write directly to{" "}
           <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent-light">
             {CONTACT_EMAIL}
+          </a>{" "}
+          or call{" "}
+          <a href={CONTACT_PHONE_HREF} className="text-accent-light">
+            {CONTACT_PHONE_DISPLAY}
           </a>
           .
-          <br />
-          Your message is confidential. Please don&apos;t share sensitive personal
-          information in a first contact.
         </p>
       </div>
     </section>

@@ -3,13 +3,13 @@ import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 const items = [
   {
     n: "I",
-    title: "Initial conversation",
-    body: "A free 20-minute call to understand what you're looking for and whether we're a good fit. No obligation.",
+    title: "Initial consultation",
+    body: "A free phone or online consultation to understand what you're looking for and whether we're a good fit. No obligation.",
   },
   {
     n: "II",
     title: "50-minute sessions",
-    body: "Weekly or fortnightly sessions, held in person in Glasgow or online. Typically £60 per session.",
+    body: "Held in person at my office in Glasgow City Centre, or online. £50 per session.",
   },
   {
     n: "III",
@@ -25,7 +25,7 @@ export function Sessions() {
       className="max-w-[1200px] mx-auto px-8 py-[clamp(4rem,8vw,7rem)]"
     >
       <div className="max-w-[720px] mb-16">
-        <SectionEyebrow>03 — Sessions</SectionEyebrow>
+        <SectionEyebrow>Sessions</SectionEyebrow>
         <h2 className="font-serif font-normal tracking-tight leading-[1.1] text-[clamp(2rem,4vw,3rem)]">
           What a session{" "}
           <span className="font-serif italic text-accent">looks like</span>.

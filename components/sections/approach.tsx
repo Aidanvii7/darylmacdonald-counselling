@@ -34,7 +34,7 @@ export function Approach() {
         </div>
 
         <div>
-          <SectionEyebrow>01 — Approach</SectionEyebrow>
+          <SectionEyebrow>Approach</SectionEyebrow>
           <h2 className="font-serif font-normal tracking-tight leading-[1.1] text-[clamp(2rem,4vw,3rem)] mb-8">
             How I can <span className="font-serif italic text-accent">help</span>.
           </h2>

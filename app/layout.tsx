@@ -44,13 +44,15 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Daryl MacDonald Counselling",
-  description:
-    "Person-centred counselling in Glasgow for adults.",
+  description: "Person-centred counselling in Glasgow City Centre for adults.",
   url: "https://darylmacdonald.com",
-  // TBD: Daryl confirm address, telephone, opening hours
+  telephone: "+44 7840 373448",
+  email: "daryl@darylmacdonald.com",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "The Consulting Rooms, 34 West George Street",
     addressLocality: "Glasgow",
+    postalCode: "G2 1DA",
     addressRegion: "Scotland",
     addressCountry: "GB",
   },

@@ -131,14 +131,15 @@ export function Contact() {
         </button>
 
         <p className="text-xs text-[#9a8f7f] mt-8 leading-[1.6]">
-          {/* TBD: Daryl confirm contact email */}
-          Alternatively, email directly:{" "}
+          Alternatively, email{" "}
           <a href="mailto:daryl@darylmacdonald.com" className="text-accent-light">
             daryl@darylmacdonald.com
+          </a>{" "}
+          or call{" "}
+          <a href="tel:+447840373448" className="text-accent-light">
+            07840 373448
           </a>
-          <br />
-          Your message is confidential. Please don&apos;t share sensitive personal information
-          in a first contact.
+          .
         </p>
       </form>
     </ContactSection>
@@ -167,7 +168,7 @@ function ContactSection({ children }: { children: React.ReactNode }) {
     >
       <div className="max-w-[900px] mx-auto">
         <div className="text-[0.7rem] tracking-[0.25em] uppercase text-accent-light font-medium mb-6">
-          04 — Contact
+          Contact
         </div>
         <h2 className="font-serif font-normal tracking-tight leading-[1.1] text-[clamp(2rem,4vw,3rem)] mb-8 text-cream">
           Take the{" "}
