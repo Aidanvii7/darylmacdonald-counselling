@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 
-// TBD: Daryl photo URL — set to a hosted portrait, then the SVG placeholder is replaced
-const PHOTO_URL: string | null = null;
+const PHOTO_URL: string | null = "/daryl.webp";
 
 export function Approach() {
   return (
@@ -19,7 +18,8 @@ export function Approach() {
                 alt="Daryl MacDonald"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-cover object-[center_30%]"
+                priority
+                className="object-cover object-center"
               />
             ) : (
               <PortraitPlaceholder />
