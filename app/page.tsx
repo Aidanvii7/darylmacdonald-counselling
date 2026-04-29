@@ -4,7 +4,7 @@ import { Hero } from "@/components/sections/hero";
 import { Approach } from "@/components/sections/approach";
 import { About } from "@/components/sections/about";
 import { Sessions } from "@/components/sections/sessions";
-import { Contact } from "@/components/sections/contact";
+import { ContactMailto } from "@/components/sections/contact-mailto";
 import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
         <Approach />
         <About />
         <Sessions />
-        <Contact />
+        <ContactMailto />
       </main>
       <Footer />
     </>
