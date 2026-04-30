@@ -1,26 +1,22 @@
 "use client";
 
 import { useState } from "react";
-
-const links = [
-  { href: "#approach", label: "Approach" },
-  { href: "#about", label: "About" },
-  { href: "#sessions", label: "Sessions" },
-  { href: "#contact", label: "Contact" },
-];
+import { site } from "@/content/site";
+import { renderEmphasis } from "@/lib/render-emphasis";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
+  const { brand, brandSubheading, brandHref, links } = site.nav;
 
   return (
     <nav className="sticky top-0 z-50 bg-cream/90 backdrop-blur border-b border-ink/10">
       <div className="max-w-[1200px] mx-auto px-8 py-6 flex justify-between items-center">
-        <a href="#top" className="no-underline">
+        <a href={brandHref} className="no-underline">
           <div className="font-serif text-2xl text-ink tracking-tight">
-            Daryl <span className="italic text-accent">MacDonald</span>
+            {renderEmphasis(brand, "italic text-accent")}
           </div>
           <div className="text-[0.65rem] tracking-[0.3em] uppercase text-muted mt-0.5">
-            Counsellor — Glasgow
+            {brandSubheading}
           </div>
         </a>
 

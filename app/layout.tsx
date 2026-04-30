@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import { site } from "@/content/site";
 import "./globals.css";
 
 const serif = Cormorant_Garamond({
@@ -18,18 +19,16 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Daryl MacDonald — Counsellor in Glasgow",
-  description:
-    "Person-centred counselling in Glasgow for adults navigating anxiety, grief, relationships, and life's difficult moments.",
-  metadataBase: new URL("https://darylmacdonald.com"),
+  title: site.meta.title,
+  description: site.meta.description,
+  metadataBase: new URL(site.meta.siteUrl),
   openGraph: {
-    title: "Daryl MacDonald — Counsellor in Glasgow",
-    description:
-      "Person-centred counselling in Glasgow for adults navigating anxiety, grief, relationships, and life's difficult moments.",
+    title: site.meta.title,
+    description: site.meta.description,
     type: "website",
     locale: "en_GB",
     url: "/",
-    siteName: "Daryl MacDonald Counselling",
+    siteName: site.meta.siteName,
   },
   robots: { index: true, follow: true },
 };
@@ -43,21 +42,21 @@ export const viewport: Viewport = {
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Daryl MacDonald Counselling",
-  description: "Person-centred counselling in Glasgow City Centre for adults.",
-  url: "https://darylmacdonald.com",
-  telephone: "+44 7840 373448",
-  email: "daryl@darylmacdonald.com",
+  name: site.meta.siteName,
+  description: site.meta.structuredDataDescription,
+  url: site.meta.siteUrl,
+  telephone: site.contactInfo.phoneE164,
+  email: site.contactInfo.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "The Consulting Rooms, 34 West George Street",
-    addressLocality: "Glasgow",
-    postalCode: "G2 1DA",
-    addressRegion: "Scotland",
-    addressCountry: "GB",
+    streetAddress: site.contactInfo.address.streetAddress,
+    addressLocality: site.contactInfo.address.locality,
+    postalCode: site.contactInfo.address.postalCode,
+    addressRegion: site.contactInfo.address.region,
+    addressCountry: site.contactInfo.address.country,
   },
-  areaServed: { "@type": "City", name: "Glasgow" },
-  priceRange: "££",
+  areaServed: { "@type": "City", name: site.contactInfo.address.locality },
+  priceRange: site.meta.priceRange,
 };
 
 export default function RootLayout({

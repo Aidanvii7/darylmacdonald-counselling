@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { contactSchema } from "@/lib/contact-schema";
+import { site } from "@/content/site";
+import { renderEmphasis } from "@/lib/render-emphasis";
 
 type Status = "idle" | "sending" | "sent" | "demo" | "error";
 
@@ -132,12 +134,12 @@ export function Contact() {
 
         <p className="text-xs text-[#9a8f7f] mt-8 leading-[1.6]">
           Alternatively, email{" "}
-          <a href="mailto:daryl@darylmacdonald.com" className="text-accent-light">
-            daryl@darylmacdonald.com
+          <a href={`mailto:${site.contactInfo.email}`} className="text-accent-light">
+            {site.contactInfo.email}
           </a>{" "}
           or call{" "}
-          <a href="tel:+447840373448" className="text-accent-light">
-            07840 373448
+          <a href={site.contactInfo.phoneHref} className="text-accent-light">
+            {site.contactInfo.phoneDisplay}
           </a>
           .
         </p>
@@ -161,6 +163,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 function ContactSection({ children }: { children: React.ReactNode }) {
+  const { eyebrow, headline, lead } = site.contact;
   return (
     <section
       id="contact"
@@ -168,15 +171,13 @@ function ContactSection({ children }: { children: React.ReactNode }) {
     >
       <div className="max-w-[900px] mx-auto">
         <div className="text-[0.7rem] tracking-[0.25em] uppercase text-accent-light font-medium mb-6">
-          Contact
+          {eyebrow}
         </div>
         <h2 className="font-serif font-normal tracking-tight leading-[1.1] text-[clamp(2rem,4vw,3rem)] mb-8 text-cream">
-          Take the{" "}
-          <span className="font-serif italic text-accent-light">first step</span>.
+          {renderEmphasis(headline, "font-serif italic text-accent-light")}
         </h2>
         <p className="font-serif text-[1.3rem] leading-[1.6] text-[#d4cdbf] mb-12 max-w-[600px]">
-          Getting in touch is often the hardest part. Send a short message and I&apos;ll reply
-          within two working days.
+          {lead}
         </p>
         {children}
       </div>

@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { SectionEyebrow } from "@/components/ui/section-eyebrow";
-
-const PHOTO_URL: string | null = "/daryl.webp";
+import { site } from "@/content/site";
+import { renderEmphasis } from "@/lib/render-emphasis";
 
 export function Approach() {
+  const { eyebrow, photo, photoCaption, headline, paragraphs } = site.approach;
+
   return (
     <section
       id="approach"
@@ -12,10 +14,10 @@ export function Approach() {
       <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.2fr] gap-[clamp(3rem,6vw,6rem)] items-start">
         <div className="relative">
           <div className="aspect-[4/5] w-full relative overflow-hidden border border-[#c9b99a] bg-[#e5dcc9]">
-            {PHOTO_URL ? (
+            {photo.src ? (
               <Image
-                src={PHOTO_URL}
-                alt="Daryl MacDonald"
+                src={photo.src}
+                alt={photo.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
                 priority
@@ -26,33 +28,30 @@ export function Approach() {
             )}
           </div>
           <div className="mt-4 text-xs tracking-[0.12em] uppercase text-accent">
-            Daryl MacDonald
+            {photoCaption.name}
           </div>
           <div className="font-serif italic text-[0.95rem] text-muted mt-1">
-            Counsellor — Glasgow
+            {photoCaption.title}
           </div>
         </div>
 
         <div>
-          <SectionEyebrow>Approach</SectionEyebrow>
+          <SectionEyebrow>{eyebrow}</SectionEyebrow>
           <h2 className="font-serif font-normal tracking-tight leading-[1.1] text-[clamp(2rem,4vw,3rem)] mb-8">
-            How I can <span className="font-serif italic text-accent">help</span>.
+            {renderEmphasis(headline)}
           </h2>
-          <p className="font-serif text-[1.3rem] leading-[1.6] text-ink-soft mb-6">
-            Do you ever feel stuck, repeating the same patterns of behaviour again and again?
-            Do you wonder where you are going wrong, making choices that don&apos;t reflect the
-            life you want to live? Do you feel there&apos;s no one to share these thoughts with,
-            afraid of burdening the ones you love?
-          </p>
-          <p className="font-serif text-[1.3rem] leading-[1.6] text-ink-soft mb-6">
-            You are not alone with these feelings. In today&apos;s fast moving world, we
-            don&apos;t make the time to slow down and really look at our lives — to understand
-            how we can change and move forward.
-          </p>
-          <p className="font-serif italic text-[1.3rem] leading-[1.6] text-accent">
-            That&apos;s what I offer you — a space to reflect, to understand yourself better,
-            and to build the life you deserve.
-          </p>
+          {paragraphs.map((p, i) => (
+            <p
+              key={i}
+              className={
+                p.emphasis
+                  ? "font-serif italic text-[1.3rem] leading-[1.6] text-accent mb-6 last:mb-0"
+                  : "font-serif text-[1.3rem] leading-[1.6] text-ink-soft mb-6 last:mb-0"
+              }
+            >
+              {p.text}
+            </p>
+          ))}
         </div>
       </div>
     </section>
@@ -92,7 +91,7 @@ function PortraitPlaceholder() {
           Portrait
         </div>
         <div className="font-serif italic text-base text-[#6b5840] opacity-70">
-          Set PHOTO_URL constant
+          Set photo.src in site.json
         </div>
       </div>
     </>
