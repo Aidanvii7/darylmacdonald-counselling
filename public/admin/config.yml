@@ -1,0 +1,164 @@
+backend:
+  name: github
+  repo: Aidanvii7/darylmacdonald-counselling
+  branch: main
+  base_url: https://darylmacdonald.vercel.app
+  auth_endpoint: api/auth
+
+# Commit straight to main — no draft/PR workflow. The build catches mistakes
+# before they reach prod, and the volume of edits is low.
+publish_mode: simple
+
+# Slightly nicer commit messages than the default.
+slug:
+  encoding: ascii
+  clean_accents: true
+
+# Daryl's portrait isn't currently editable through the CMS — adding image
+# upload requires a media folder, which we'll wire up in a future iteration
+# if needed. For now `media_folder` is set so Decap doesn't error out, but
+# nothing in our schema points to it.
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: site
+    label: "Site Content"
+    description: "All the words and numbers on darylmacdonald.com. Edit a value, then click Publish."
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/site.json"
+        name: site
+        label: "Site (single page)"
+        description: "Sections appear in the same order as on the page. Wrap a word in *asterisks* to make it gold-italic in the rendered site."
+        format: json
+        fields:
+          - label: "Page metadata"
+            name: meta
+            widget: object
+            fields:
+              - { label: "Page title (browser tab + Google search)", name: title, widget: string }
+              - { label: "Description (Google search snippet)", name: description, widget: text }
+              - { label: "Short description (for structured data / Google business panel)", name: structuredDataDescription, widget: text }
+              - { label: "Site URL", name: siteUrl, widget: hidden }
+              - { label: "Site name", name: siteName, widget: hidden }
+              - { label: "Price range (schema.org)", name: priceRange, widget: hidden }
+
+          - label: "Contact details"
+            name: contactInfo
+            widget: object
+            fields:
+              - { label: "Email", name: email, widget: string }
+              - { label: "Phone — display format (e.g. 07840 373448)", name: phoneDisplay, widget: string }
+              - { label: "Phone — tel: link (e.g. tel:+447840373448)", name: phoneHref, widget: string }
+              - { label: "Phone — international format (e.g. +44 7840 373448)", name: phoneE164, widget: string }
+              - label: "Address"
+                name: address
+                widget: object
+                fields:
+                  - label: "Address lines (shown in footer)"
+                    name: lines
+                    widget: list
+                    field: { label: "Line", name: line, widget: string }
+                  - { label: "Locality (city)", name: locality, widget: string }
+                  - { label: "Postal code", name: postalCode, widget: string }
+                  - { label: "Street address (used for structured data, hidden on page)", name: streetAddress, widget: string }
+                  - { label: "Region", name: region, widget: hidden }
+                  - { label: "Country", name: country, widget: hidden }
+              - { label: "Google Maps directions URL", name: directionsUrl, widget: string }
+
+          - label: "Navigation bar"
+            name: nav
+            widget: object
+            fields:
+              - { label: "Brand text (top-left of every page)", name: brand, widget: string, hint: "Wrap text in asterisks for italic-gold styling" }
+              - { label: "Brand subheading", name: brandSubheading, widget: string }
+              - { label: "Brand link target", name: brandHref, widget: hidden }
+              - label: "Nav links"
+                name: links
+                widget: list
+                fields:
+                  - { label: "Label", name: label, widget: string }
+                  - { label: "Anchor (e.g. #approach)", name: href, widget: hidden }
+
+          - label: "Hero (top of page)"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Eyebrow (small caps text above the headline)", name: eyebrow, widget: string }
+              - label: "Headline lines"
+                name: headlineLines
+                widget: list
+                hint: "Each entry becomes one line. Wrap words in asterisks to make them gold-italic."
+                field: { label: "Line", name: line, widget: string }
+              - { label: "Lead paragraph", name: lead, widget: text }
+              - { label: "CTA button label", name: ctaLabel, widget: string }
+              - { label: "CTA target (e.g. #contact)", name: ctaHref, widget: hidden }
+
+          - label: "Approach (section 1)"
+            name: approach
+            widget: object
+            fields:
+              - { label: "Eyebrow", name: eyebrow, widget: string }
+              - { label: "Headline (use *asterisks* for italic-gold)", name: headline, widget: string }
+              - label: "Photo"
+                name: photo
+                widget: object
+                fields:
+                  - { label: "File path (in /public)", name: src, widget: string }
+                  - { label: "Alt text", name: alt, widget: string }
+              - label: "Photo caption"
+                name: photoCaption
+                widget: object
+                fields:
+                  - { label: "Name", name: name, widget: string }
+                  - { label: "Role", name: title, widget: string }
+              - label: "Paragraphs"
+                name: paragraphs
+                widget: list
+                fields:
+                  - { label: "Text", name: text, widget: text }
+                  - { label: "Render as italic-gold (whole paragraph)", name: emphasis, widget: boolean, default: false, required: false }
+
+          - label: "About (section 2)"
+            name: about
+            widget: object
+            fields:
+              - { label: "Eyebrow", name: eyebrow, widget: string }
+              - { label: "Headline", name: headline, widget: string }
+              - { label: "Bio paragraph", name: bio, widget: text }
+              - { label: "Pull quote", name: quote, widget: text }
+              - { label: "Pull quote attribution", name: quoteAttribution, widget: string }
+
+          - label: "Sessions (section 3)"
+            name: sessions
+            widget: object
+            fields:
+              - { label: "Eyebrow", name: eyebrow, widget: string }
+              - { label: "Headline", name: headline, widget: string }
+              - label: "Items (three cards)"
+                name: items
+                widget: list
+                fields:
+                  - { label: "Numeral (I, II, III)", name: numeral, widget: string }
+                  - { label: "Title", name: title, widget: string }
+                  - { label: "Body", name: body, widget: text }
+
+          - label: "Contact (section 4)"
+            name: contact
+            widget: object
+            fields:
+              - { label: "Eyebrow", name: eyebrow, widget: string }
+              - { label: "Headline", name: headline, widget: string }
+              - { label: "Lead paragraph", name: lead, widget: text }
+              - { label: "CTA button label", name: ctaLabel, widget: string }
+              - { label: "Email subject line (when someone clicks Email)", name: subjectLine, widget: string }
+
+          - label: "Footer"
+            name: footer
+            widget: object
+            fields:
+              - { label: "Brand text", name: brand, widget: string }
+              - { label: "Directions link label", name: directionsLabel, widget: string }
