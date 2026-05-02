@@ -112,8 +112,8 @@ collections:
                 name: photo
                 widget: object
                 fields:
-                  - { label: "File path (in /public)", name: src, widget: string }
-                  - { label: "Alt text", name: alt, widget: string }
+                  - { label: "Image file", name: src, widget: image, hint: "Upload or select from the media library. Square (1:1) photos work best — they get cropped to a tall 4:5 portrait frame on the page." }
+                  - { label: "Alt text (description for screen readers)", name: alt, widget: string }
               - label: "Photo caption"
                 name: photoCaption
                 widget: object
