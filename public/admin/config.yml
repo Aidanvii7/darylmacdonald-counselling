@@ -9,6 +9,11 @@ backend:
 # before they reach prod, and the volume of edits is low.
 publish_mode: simple
 
+# The live site. Used for "View on site" links in the editor; the actual
+# preview is the deployed site, which updates ~30s after publish.
+site_url: https://darylmacdonald.vercel.app
+display_url: https://darylmacdonald.vercel.app
+
 # Slightly nicer commit messages than the default.
 slug:
   encoding: ascii
