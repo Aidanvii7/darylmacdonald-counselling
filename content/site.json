@@ -1,49 +1,41 @@
 {
-  "meta": {
-    "siteUrl": "https://darylmacdonald.com",
-    "siteName": "Daryl MacDonald Counselling",
-    "title": "Daryl MacDonald — Counsellor in Glasgow",
-    "description": "Person-centred counselling in Glasgow for adults navigating anxiety, grief, relationships, and life's difficult moments.",
-    "structuredDataDescription": "Person-centred counselling in Glasgow City Centre for adults.",
-    "priceRange": "££"
-  },
-  "contactInfo": {
-    "email": "daryl@darylmacdonald.com",
-    "phoneDisplay": "07840 373448",
-    "phoneHref": "tel:+447840373448",
-    "phoneE164": "+44 7840 373448",
-    "address": {
-      "lines": ["The Consulting Rooms", "34 West George Street, Glasgow G2 1DA"],
-      "streetAddress": "The Consulting Rooms, 34 West George Street",
-      "locality": "Glasgow",
-      "postalCode": "G2 1DA",
-      "region": "Scotland",
-      "country": "GB"
-    },
-    "directionsUrl": "https://www.google.com/maps/search/?api=1&query=The+Consulting+Rooms,+34+West+George+Street,+Glasgow+G2+1DA"
+  "contact": {
+    "eyebrow": "Contact",
+    "headline": "Take the *first step*.",
+    "lead": "Getting in touch is often the hardest part. Send a short email and I'll reply within two working days.",
+    "ctaLabel": "Email Daryl →",
+    "subjectLine": "Booking enquiry — darylmacdonald.com"
   },
   "nav": {
     "brand": "Daryl *MacDonald*",
     "brandSubheading": "Counsellor — Glasgow",
     "brandHref": "#top",
     "links": [
-      { "href": "#approach", "label": "Approach" },
-      { "href": "#about", "label": "About" },
-      { "href": "#sessions", "label": "Sessions" },
-      { "href": "#contact", "label": "Contact" }
+      {
+        "href": "#approach",
+        "label": "Approach"
+      },
+      {
+        "href": "#about",
+        "label": "About"
+      },
+      {
+        "href": "#sessions",
+        "label": "Sessions"
+      },
+      {
+        "href": "#contact",
+        "label": "Contact"
+      }
     ]
   },
-  "hero": {
-    "eyebrow": "Glasgow, Scotland",
-    "headlineLines": [
-      "A space to",
-      "*reflect*, to",
-      "understand,",
-      "to *move forward*."
-    ],
-    "lead": "Counselling for adults navigating life's difficult moments — anxiety, low mood, grief, relationships, and the patterns we can't quite see on our own.",
-    "ctaLabel": "Book a consultation",
-    "ctaHref": "#contact"
+  "meta": {
+    "siteUrl": "https://darylmacdonald.com",
+    "siteName": "Daryl MacDonald Counselling",
+    "title": "Daryl MacDonald — Counsellor in Glesga",
+    "description": "Person-centred counselling in Glasgow for adults navigating anxiety, grief, relationships, and life's difficult moments.",
+    "structuredDataDescription": "Person-centred counselling in Glasgow City Centre for adults.",
+    "priceRange": "££"
   },
   "approach": {
     "eyebrow": "Approach",
@@ -76,6 +68,40 @@
     "quote": "The curious paradox is that when I accept myself just as I am, then I can change.",
     "quoteAttribution": "Carl Rogers"
   },
+  "contactInfo": {
+    "email": "daryl@darylmacdonald.com",
+    "phoneDisplay": "07840 373448",
+    "phoneHref": "tel:+447840373448",
+    "phoneE164": "+44 7840 373448",
+    "address": {
+      "lines": [
+        "The Consulting Rooms",
+        "34 West George Street, Glasgow G2 1DA"
+      ],
+      "streetAddress": "The Consulting Rooms, 34 West George Street",
+      "locality": "Glasgow",
+      "postalCode": "G2 1DA",
+      "region": "Scotland",
+      "country": "GB"
+    },
+    "directionsUrl": "https://www.google.com/maps/search/?api=1&query=The+Consulting+Rooms,+34+West+George+Street,+Glasgow+G2+1DA"
+  },
+  "hero": {
+    "eyebrow": "Glasgow, Scotland",
+    "headlineLines": [
+      "A space to",
+      "*reflect*, to",
+      "understand,",
+      "to *move forward*."
+    ],
+    "lead": "Counselling for adults navigating life's difficult moments — anxiety, low mood, grief, relationships, and the patterns we can't quite see on our own.",
+    "ctaLabel": "Book a consultation",
+    "ctaHref": "#contact"
+  },
+  "footer": {
+    "brand": "Daryl MacDonald Counselling",
+    "directionsLabel": "Get directions ↗"
+  },
   "sessions": {
     "eyebrow": "Sessions",
     "headline": "What a session *looks like*.",
@@ -96,16 +122,5 @@
         "body": "We'll review regularly to check the work is serving you. Short-term focused work or longer-term exploration — both are welcome."
       }
     ]
-  },
-  "contact": {
-    "eyebrow": "Contact",
-    "headline": "Take the *first step*.",
-    "lead": "Getting in touch is often the hardest part. Send a short email and I'll reply within two working days.",
-    "ctaLabel": "Email Daryl →",
-    "subjectLine": "Booking enquiry — darylmacdonald.com"
-  },
-  "footer": {
-    "brand": "Daryl MacDonald Counselling",
-    "directionsLabel": "Get directions ↗"
   }
 }
