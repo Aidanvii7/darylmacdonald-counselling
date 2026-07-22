@@ -22,11 +22,13 @@ unknown.**
 
 ## Phase 0 — TODAY (before anything can shut down)
 
-- [ ] Ask Daryl for the **exact end-of-service date** (in the cancellation
-      email) and confirm the mailbox still accepts logins
-- [ ] **Back up the mailbox now**: full IMAP copy from `imap.stackmail.com:993`
-      (Thunderbird account copy, or `imapsync`). Daryl enters his own
-      credentials. This is the only irreplaceable data in the whole migration.
+- [ ] Ask Daryl for the **exact end-of-service date** — now folded into the
+      nameserver request email to provider support (2026-07-22)
+- [x] ~~Back up the mailbox~~ — **dropped 2026-07-22: Daryl confirmed he does
+      not need his old emails.** (Flagged to him that anything unbacked-up is
+      gone forever at end of service; his call.) This removes the IMAP
+      migration from Phase 3 entirely — Google Workspace starts with a fresh
+      mailbox.
 - [ ] If the end-of-service date is imminent (<1 week), ask the provider to
       extend or un-cancel until the transfer completes
 
@@ -38,13 +40,12 @@ unknown.**
       all 8 (A @, CNAME www/mail/smtp/imap/pop3, MX mx.stackmail.com,
       TXT spf) and every record was set to **DNS only** (auto-scan had 6 of
       them proxied; proxying the mail CNAMEs would break IMAP/SMTP)
-- [ ] Change nameservers at the old provider's control panel (do this while
-      the panel still works!) to:
-      - `byron.ns.cloudflare.com`
-      - `emerie.ns.cloudflare.com`
-      Needs Daryl's login to the old provider panel. Zone stays "Pending" on
-      Cloudflare until this is detected (can take a few hours after the
-      change).
+- [ ] Change nameservers to `byron.ns.cloudflare.com` +
+      `emerie.ns.cloudflare.com`. Daryl's panel has no nameserver option
+      (site-builder package), so requested via provider support instead —
+      email drafted for Daryl to send to "Jonathon" 2026-07-22, which also
+      asks for the exact end-of-service date. Zone stays "Pending" on
+      Cloudflare until the change is detected (can take a few hours).
 
 ## Phase 2 — Domain transfer
 
@@ -57,11 +58,11 @@ unknown.**
 
 - [ ] Google Workspace **Business Starter** (~£5/mo, the only recurring cost)
       for `daryl@darylmacdonald.com`; verify domain via Cloudflare TXT record
-- [ ] Migrate inbox: Workspace Data Migration Service ← IMAP from
-      `imap.stackmail.com` (or restore from the Phase 0 backup if Stackmail is
-      already gone)
+- [ ] ~~Migrate inbox~~ — not needed; Daryl doesn't want his old mail.
+      Fresh mailbox. (Also means the four Stackmail CNAMEs and the Stackmail
+      MX can simply be deleted at this point rather than preserved.)
 - [ ] Flip MX/SPF to Google in Cloudflare DNS, add Google DKIM
-- [ ] Send/receive test both directions; check old mail is present
+- [ ] Send/receive test both directions
 
 ## Phase 4 — Site cutover
 
