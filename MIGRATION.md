@@ -32,13 +32,19 @@ unknown.**
 
 ## Phase 1 — DNS escape hatch (survives the old host disappearing)
 
-- [ ] Create Cloudflare account (Daryl's or agency account), add zone
-      `darylmacdonald.com`
-- [ ] Replicate ALL current DNS records, **including** `MX 10 mx.stackmail.com`
-      and `TXT "v=spf1 include:spf.stackmail.com a mx -all"` — email must keep
-      flowing to Stackmail until Phase 3 cutover
-- [ ] Change nameservers to Cloudflare's at the old provider's control panel
-      (do this while the panel still works!)
+- [x] Create Cloudflare account (Aidan's, GitHub SSO; invite Daryl as member
+      later if wanted), add zone `darylmacdonald.com` — done 2026-07-22
+- [x] Replicate ALL current DNS records — done 2026-07-22: auto-scan imported
+      all 8 (A @, CNAME www/mail/smtp/imap/pop3, MX mx.stackmail.com,
+      TXT spf) and every record was set to **DNS only** (auto-scan had 6 of
+      them proxied; proxying the mail CNAMEs would break IMAP/SMTP)
+- [ ] Change nameservers at the old provider's control panel (do this while
+      the panel still works!) to:
+      - `byron.ns.cloudflare.com`
+      - `emerie.ns.cloudflare.com`
+      Needs Daryl's login to the old provider panel. Zone stays "Pending" on
+      Cloudflare until this is detected (can take a few hours after the
+      change).
 
 ## Phase 2 — Domain transfer
 
