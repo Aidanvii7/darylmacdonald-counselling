@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "darylmacdonald",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  }
+  // Secrets (set via `wrangler secret put`, not committed):
+  //   RESEND_API_KEY, OAUTH_GITHUB_CLIENT_ID, OAUTH_GITHUB_CLIENT_SECRET
+}
