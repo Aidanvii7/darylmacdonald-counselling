@@ -96,6 +96,15 @@ unknown.**
       a matching redirect_uri, sets an HttpOnly/Secure/SameSite=lax CSRF
       cookie; callback rejects a missing code (400) and a forged state;
       `/admin/` serves and its config points at the right repo + domain
+- [x] Fixed two things the first login attempt exposed:
+      1. Decap calls `crypto.randomUUID()` during config validation with no
+         fallback, so Safari failed with "Error loading the CMS configuration".
+         Polyfilled in `public/admin/index.html`; also pinned decap-cms to
+         3.15.1 (the floating `^3.0.0` range is how the breakage arrived).
+      2. The OAuth client ID is `Ov23libkwNxHLA1a3Gby` — that first character
+         is a **capital letter O, not a zero**. Transcribing it wrong made
+         GitHub 404 the authorize popup. Worth re-checking with a DOM read
+         rather than a screenshot if it's ever re-entered.
 - [ ] Final check only Daryl can do: actually log in at
       `https://darylmacdonald.com/admin/` and publish a test edit
 
