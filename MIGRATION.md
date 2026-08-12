@@ -84,17 +84,20 @@ unknown.**
       optimizer 200, `server: cloudflare`. Mail DNS untouched (MX + all four
       Stackmail CNAMEs still resolving).
 
-### Phase 4 remainder — CMS login (needs Aidan)
+### Phase 4 remainder — CMS login ✅ DONE 2026-07-22
 
-The public site is live, but Decap CMS login at `/admin` is broken until:
-
-- [ ] Set the two secrets on the Worker (values are in the Vercel project's
-      env vars, or regenerate on the GitHub OAuth app):
-      `npx wrangler secret put GITHUB_OAUTH_CLIENT_ID`
-      `npx wrangler secret put GITHUB_OAUTH_CLIENT_SECRET`
-- [ ] Update the GitHub OAuth app's **Authorization callback URL** to
-      `https://darylmacdonald.com/api/auth/callback`
-- [ ] Verify Daryl can log in at `https://darylmacdonald.com/admin/`
+- [x] Both Worker secrets set (`GITHUB_OAUTH_CLIENT_ID`,
+      `GITHUB_OAUTH_CLIENT_SECRET`). **Note:** Vercel's env vars were flagged
+      *Sensitive* = write-only, so neither value could be recovered from there;
+      the client secret had to be regenerated on the GitHub OAuth app.
+- [x] GitHub OAuth app "Daryl MacDonald Counselling CMS" updated: Homepage
+      URL and Authorization callback URL now on `darylmacdonald.com`
+- [x] Verified live: `/api/auth` 307s to GitHub with the right client_id and
+      a matching redirect_uri, sets an HttpOnly/Secure/SameSite=lax CSRF
+      cookie; callback rejects a missing code (400) and a forged state;
+      `/admin/` serves and its config points at the right repo + domain
+- [ ] Final check only Daryl can do: actually log in at
+      `https://darylmacdonald.com/admin/` and publish a test edit
 
 - [ ] Post-launch: swap the mailto contact section for the real Resend form
       (`RESEND_API_KEY` secret; domain DKIM/SPF now controllable in Cloudflare)
