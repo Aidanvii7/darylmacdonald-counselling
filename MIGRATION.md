@@ -108,8 +108,46 @@ unknown.**
 - [ ] Final check only Daryl can do: actually log in at
       `https://darylmacdonald.com/admin/` and publish a test edit
 
+## Phase 5 — Automatic deploys ✅ DONE 2026-07-22
+
+Without this, Daryl's CMS "Publish" committed to GitHub but never reached the
+live site — worse than the Vercel setup it replaced.
+
+- [x] Cloudflare Workers Builds connected to `Aidanvii7/darylmacdonald-counselling`,
+      production branch `main`, via the GitHub app (scoped to that one repo)
+- [x] Build config — **Cloudflare's defaults are wrong for this project** and
+      must be overridden, or builds run plain `next build` and deploy
+      unadapted output:
+      - Build command: `npx opennextjs-cloudflare build`
+      - Deploy command: `npx opennextjs-cloudflare deploy`
+      - Version command: `npx opennextjs-cloudflare upload`
+      - Root directory `/`
+- [x] Verified: pushing 42b281e produced version `fbafaaec` labelled with the
+      commit message and branch `main` (not "Manually deployed / Wrangler"),
+      and the live site stayed healthy — apex/www/admin 200, portrait 200,
+      CMS polyfill and correct OAuth client ID intact.
+
+### Gotchas worth remembering
+
+- The dashboard's Build section only appears under **Settings**, and the connect
+  flow needs a real browser: it requires GitHub sudo-mode (passkey), and the
+  build-command fields are React-controlled, so setting them by script silently
+  fails — the "Unsaved changes" bar never appears and nothing persists.
+- Installing the GitHub app alone does not connect the Worker; the repo must
+  then be picked from the Cloudflare side.
+
+## Remaining
+
 - [ ] Post-launch: swap the mailto contact section for the real Resend form
       (`RESEND_API_KEY` secret; domain DKIM/SPF now controllable in Cloudflare)
+- [ ] Email → Google Workspace (deferred; see `docs/EMAIL-SETUP-FOR-DARYL.md`
+      and `docs/email-setup-agent-prompt.md`). **Deadline: whenever the old
+      provider's plan lapses, `daryl@darylmacdonald.com` stops working.**
+- [ ] Optional: transfer the domain to Cloudflare Registrar with the EPP code
+      (at-cost renewals; current registration runs to 2027-03-11)
+- [ ] Optional: retire the Vercel project — nothing points at it now
+- [ ] Optional: fold in content the old site had and this one doesn't —
+      testimonials, phone number, office address, logo (`archive/old-site/`)
 
 ## Phase 5 — Decommission
 
