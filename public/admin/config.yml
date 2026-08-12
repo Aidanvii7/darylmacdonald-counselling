@@ -2,7 +2,7 @@ backend:
   name: github
   repo: Aidanvii7/darylmacdonald-counselling
   branch: main
-  base_url: https://darylmacdonald.vercel.app
+  base_url: https://darylmacdonald.com
   auth_endpoint: api/auth
 
 # Commit straight to main — no draft/PR workflow. The build catches mistakes
@@ -11,8 +11,8 @@ publish_mode: simple
 
 # The live site. Used for "View on site" links in the editor; the actual
 # preview is the deployed site, which updates ~30s after publish.
-site_url: https://darylmacdonald.vercel.app
-display_url: https://darylmacdonald.vercel.app
+site_url: https://darylmacdonald.com
+display_url: https://darylmacdonald.com
 
 # Slightly nicer commit messages than the default.
 slug:
