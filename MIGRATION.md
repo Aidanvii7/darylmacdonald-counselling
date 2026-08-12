@@ -40,12 +40,14 @@ unknown.**
       all 8 (A @, CNAME www/mail/smtp/imap/pop3, MX mx.stackmail.com,
       TXT spf) and every record was set to **DNS only** (auto-scan had 6 of
       them proxied; proxying the mail CNAMEs would break IMAP/SMTP)
-- [ ] Change nameservers to `byron.ns.cloudflare.com` +
-      `emerie.ns.cloudflare.com`. Daryl's panel has no nameserver option
-      (site-builder package), so requested via provider support instead —
-      email drafted for Daryl to send to "Jonathon" 2026-07-22, which also
-      asks for the exact end-of-service date. Zone stays "Pending" on
-      Cloudflare until the change is detected (can take a few hours).
+- [x] Change nameservers to `byron.ns.cloudflare.com` +
+      `emerie.ns.cloudflare.com` — **DONE 2026-07-22** by provider support
+      ("Jonathon"), after Daryl's panel turned out to have no nameserver
+      option. Verified: whois shows both CF nameservers at the registry, and
+      all 8 records resolve identically from `byron.ns.cloudflare.com`
+      (A → 34.202.63.170, www CNAME, MX mx.stackmail.com, SPF TXT, and the
+      four mail CNAMEs). Live checks: site 200, www 301, imap:993 + smtp:465
+      reachable. **The old provider is no longer a single point of failure.**
 
 ## Phase 2 — Domain transfer
 
