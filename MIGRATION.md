@@ -66,18 +66,38 @@ unknown.**
 - [ ] Flip MX/SPF to Google in Cloudflare DNS, add Google DKIM
 - [ ] Send/receive test both directions
 
-## Phase 4 — Site cutover
+## Phase 4 — Site cutover ✅ DONE 2026-07-22
 
-- [ ] `wrangler secret put` × `RESEND_API_KEY`, `GITHUB_OAUTH_CLIENT_ID`,
-      `GITHUB_OAUTH_CLIENT_SECRET`
-- [ ] Fix hardcoded `SITE_URL` in `app/api/auth/route.ts` (currently the
-      vercel.app URL) → env var / `https://darylmacdonald.com`
-- [ ] Update the GitHub OAuth app's callback URL to the new domain
-- [ ] `npx opennextjs-cloudflare build && npx opennextjs-cloudflare deploy`;
-      attach `darylmacdonald.com` as the Worker's custom domain
-- [ ] Update `site_url` in `public/admin/config.yml` (Decap) to the new domain
+- [x] Fix hardcoded `SITE_URL` in `app/api/auth/route.ts` → env-overridable,
+      defaults to `https://darylmacdonald.com`
+- [x] Update `base_url`/`site_url`/`display_url` in `public/admin/config.yml`
+- [x] Registered account subdomain `aidanvii.workers.dev`; staging lives at
+      `https://darylmacdonald.aidanvii.workers.dev` (kept enabled via
+      `workers_dev: true`)
+- [x] `opennextjs-cloudflare build && deploy`; both apex and www attached as
+      custom domains. **Gotcha for next time:** Cloudflare refuses to attach a
+      custom domain over an existing externally-managed A/CNAME — the old A
+      record and www CNAME had to be deleted first, so there was a ~45s
+      resolution gap. Deleted values were `A @ 34.202.63.170` and
+      `CNAME www → darylmacdonald.com` if a rollback is ever needed.
+- [x] Verified live: apex 200, www 200, /admin 200, portrait + `/_next/image`
+      optimizer 200, `server: cloudflare`. Mail DNS untouched (MX + all four
+      Stackmail CNAMEs still resolving).
+
+### Phase 4 remainder — CMS login (needs Aidan)
+
+The public site is live, but Decap CMS login at `/admin` is broken until:
+
+- [ ] Set the two secrets on the Worker (values are in the Vercel project's
+      env vars, or regenerate on the GitHub OAuth app):
+      `npx wrangler secret put GITHUB_OAUTH_CLIENT_ID`
+      `npx wrangler secret put GITHUB_OAUTH_CLIENT_SECRET`
+- [ ] Update the GitHub OAuth app's **Authorization callback URL** to
+      `https://darylmacdonald.com/api/auth/callback`
+- [ ] Verify Daryl can log in at `https://darylmacdonald.com/admin/`
+
 - [ ] Post-launch: swap the mailto contact section for the real Resend form
-      (domain DKIM/SPF now controllable in Cloudflare DNS)
+      (`RESEND_API_KEY` secret; domain DKIM/SPF now controllable in Cloudflare)
 
 ## Phase 5 — Decommission
 
