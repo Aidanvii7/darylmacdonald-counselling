@@ -8,6 +8,30 @@
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!--
+      Decap's config validation calls crypto.randomUUID(), which some browsers
+      (notably Safari) don't expose, and it has no fallback — the CMS then dies
+      with "Error loading the CMS configuration". getRandomValues is available
+      everywhere, so build a v4 UUID from it when randomUUID is missing.
+      Must run before the CMS script.
+    -->
+    <script>
+      if (!crypto.randomUUID) {
+        crypto.randomUUID = function () {
+          const b = crypto.getRandomValues(new Uint8Array(16));
+          b[6] = (b[6] & 0x0f) | 0x40; // version 4
+          b[8] = (b[8] & 0x3f) | 0x80; // variant 10xx
+          const h = Array.from(b, (x) => x.toString(16).padStart(2, "0")).join("");
+          return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}`;
+        };
+      }
+    </script>
+    <!--
+      Pinned deliberately. A floating "^3.0.0" range means the CMS silently
+      upgrades on every page load, so Daryl's editor can break with no change
+      on our side — which is exactly how the randomUUID breakage arrived.
+      Bump this on purpose after testing the login flow.
+    -->
+    <script src="https://unpkg.com/decap-cms@3.15.1/dist/decap-cms.js"></script>
   </body>
 </html>

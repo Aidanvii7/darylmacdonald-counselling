@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "darylmacdonald",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  // Keep the workers.dev URL alive as a staging target alongside the custom
+  // domains — specifying routes otherwise disables it.
+  "workers_dev": true,
+  // Custom domains. Cloudflare manages the A/CNAME records for these itself.
+  // Mail records (MX, and the mail/imap/smtp/pop3 CNAMEs) are untouched.
+  "routes": [
+    { "pattern": "darylmacdonald.com", "custom_domain": true },
+    { "pattern": "www.darylmacdonald.com", "custom_domain": true }
+  ]
+  // Secrets (set via `wrangler secret put`, not committed):
+  //   GITHUB_OAUTH_CLIENT_ID, GITHUB_OAUTH_CLIENT_SECRET — needed for the
+  //   Decap CMS login at /admin. RESEND_API_KEY is only needed once the
+  //   contact form moves off the mailto fallback.
+}

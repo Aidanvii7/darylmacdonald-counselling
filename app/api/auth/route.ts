@@ -4,7 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 // route; we redirect to GitHub's authorize URL with a CSRF state token, then
 // GitHub redirects back to /api/auth/callback once the user has approved.
 
-const SITE_URL = "https://darylmacdonald.vercel.app";
+// Must match the callback URL registered on the GitHub OAuth app exactly, so
+// this can't be derived from the incoming request. Override with SITE_URL when
+// deploying somewhere other than production.
+const SITE_URL = process.env.SITE_URL || "https://darylmacdonald.com";
 const CALLBACK_URL = `${SITE_URL}/api/auth/callback`;
 
 function randomState() {
