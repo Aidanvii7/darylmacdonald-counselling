@@ -151,7 +151,21 @@ collections:
                   - { label: "Title", name: title, widget: string }
                   - { label: "Body", name: body, widget: text }
 
-          - label: "Contact (section 4)"
+          - label: "What people say (section 4)"
+            name: testimonials
+            widget: object
+            fields:
+              - { label: "Eyebrow", name: eyebrow, widget: string }
+              - { label: "Headline", name: headline, widget: string }
+              - label: "Quotes"
+                name: items
+                widget: list
+                hint: "Client quotes. Keep them anonymous — use the attribution field only for something general like 'A client, Glasgow', never a real name."
+                fields:
+                  - { label: "Quote", name: quote, widget: text }
+                  - { label: "Attribution (optional)", name: attribution, widget: string, required: false }
+
+          - label: "Contact (section 5)"
             name: contact
             widget: object
             fields:

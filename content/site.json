@@ -102,6 +102,21 @@
     "brand": "Daryl MacDonald Counselling",
     "directionsLabel": "Get directions ↗"
   },
+  "testimonials": {
+    "eyebrow": "What people say",
+    "headline": "In their *own words*.",
+    "items": [
+      {
+        "quote": "Daryl is thoughtful and patient, and has a calm and contemplative approach that allows you to walk through the issues that are affecting you, and give helpful advice on next steps."
+      },
+      {
+        "quote": "I felt that Daryl really listened. He was very astute and picked up on a lot of things I wasn't aware I was thinking or feeling. I found the sessions very beneficial."
+      },
+      {
+        "quote": "Daryl understands my needs and is a great contributor."
+      }
+    ]
+  },
   "sessions": {
     "eyebrow": "Sessions",
     "headline": "What a session *looks like*.",

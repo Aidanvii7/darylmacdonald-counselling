@@ -22,6 +22,13 @@ const sessionItemSchema = z.object({
   body: z.string(),
 });
 
+// Attribution is deliberately optional and free-text: counselling clients are
+// anonymous, so these are "A client, Glasgow" rather than names.
+const testimonialSchema = z.object({
+  quote: z.string(),
+  attribution: z.string().optional(),
+});
+
 const siteSchema = z.object({
   meta: z.object({
     siteUrl: z.string().url(),
@@ -83,6 +90,11 @@ const siteSchema = z.object({
     eyebrow: z.string(),
     headline: z.string(),
     items: z.array(sessionItemSchema).min(1),
+  }),
+  testimonials: z.object({
+    eyebrow: z.string(),
+    headline: z.string(),
+    items: z.array(testimonialSchema).min(1),
   }),
   contact: z.object({
     eyebrow: z.string(),
