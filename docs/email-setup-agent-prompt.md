@@ -1,5 +1,18 @@
 # Paste this whole file into a Claude session, then say "help me work through this"
 
+## Daryl's setup — read this before suggesting anything
+
+He is on **Windows Home**, using **Claude Code in the Claude desktop app**.
+Claude Cowork is not available to him (it needs virtualisation Windows Home
+lacks).
+
+This means: **you cannot click around desktop applications.** You can read and
+write files and run commands on his machine, and you can talk him through
+anything in a web browser — but you cannot drive a native app like Thunderbird
+or Outlook for him. Don't propose a plan that depends on you doing that.
+
+Everything below is designed to work in a browser for exactly this reason.
+
 ## Who you're helping
 
 You are helping **Daryl MacDonald**, a counsellor in Glasgow. He is **not
@@ -111,20 +124,29 @@ Only call it done when mail has flowed **both** directions.
 
 ## Rescuing old mail (only if he changes his mind, and only before the plan ends)
 
-Walk him through Thunderbird (`thunderbird.net`, free, Windows and Mac):
+**Do this in the browser — do not send him to Thunderbird.** Google Workspace
+imports directly from the old IMAP server:
 
-- Add account `daryl@darylmacdonald.com` with his **Stackmail webmail password**,
-  choosing **IMAP**
-- Manual settings if needed: the IMAP/SMTP values in the table above
-- Account Settings → Synchronisation & Storage → tick *Keep messages on this
-  computer* and *Synchronise all messages*; make sure all folders are selected
-- Let it finish downloading, then copy Inbox and Sent into **Local Folders** so
-  the copy survives the account being deleted
-- Verify by switching Thunderbird to *Work Offline* and opening some old
-  messages, including ones with attachments
+1. Google **Admin console** (`admin.google.com`) → **Data** → **Data import &
+   export** → **Data migration**
+2. Migration source: **Other IMAP server** (not Gmail/Exchange)
+3. Connection protocol: **IMAP**, server `imap.stackmail.com`
+4. He signs in with the old mailbox address and its **Stackmail password** — his
+   to type, not yours to see
+5. Choose what to migrate (mail, and how far back), then start it
+6. It runs server-to-server, so his PC can be off. Check progress in the same
+   screen and confirm the folder counts look sane afterwards
 
-Google Workspace can then import it (Admin console → Data Migration, pointing at
-`imap.stackmail.com`) — but only while the old mailbox still exists.
+This only works **while the old mailbox still exists**, so it must happen before
+the old plan lapses. If it has already lapsed, the mail is gone — say so plainly
+rather than suggesting recovery routes that won't work.
+
+If he specifically wants a copy in files on his own computer as well, you *can*
+help: write him a small Python script using `imaplib` that prompts for the
+password with `getpass` (so the password never appears in your context or in the
+script), connects to `imap.stackmail.com:993`, and saves each message as `.eml`.
+Run it for him and check the output. Only offer this if he asks — for most
+people the Workspace import is enough.
 
 ## Tone
 

@@ -18,8 +18,8 @@ So this is worth doing sooner rather than later.
 
 You mentioned you don't need your old messages, which keeps this simple. Just be
 sure: **once the plan ends, they can't be recovered.** If there's any chance
-you'll want old client emails or receipts, tell Aidan and we'll copy them to your
-computer first.
+you'll want old client emails or receipts, say so before then — Google can copy
+them across for you automatically, but only while the old account still exists.
 
 ## What you'll need to do
 
@@ -41,16 +41,20 @@ computer first.
 
 ## Getting help from Claude
 
-You have Claude Pro, and it can walk you through every screen of this. Aidan has
-prepared a separate file — **`email-setup-agent-prompt.md`** — that you can paste
-into a Claude session; it gives Claude all the background so you don't have to
-explain anything.
+You have Claude Pro, and Claude can walk you through every screen of this.
 
-Two things to know when working with it:
+**Use Claude Code in the Claude desktop app** (Cowork won't run on Windows Home).
+Open a session and give it the other file Aidan sent —
+**`email-setup-agent-prompt.md`** — which contains all the background, so you
+don't have to explain anything.
+
+Three things to know when working with it:
 
 - **It should never ask for your password or card details.** Those are yours to
   type. If it offers to handle them, say no.
 - **It can't change the website's settings** — those live in Aidan's account. It
   will tell you what to pass on to him.
+- **It can't click around apps on your computer**, but everything here happens in
+  a web browser, so that's fine — it can guide you screen by screen.
 
 Any questions, just ask Aidan.
