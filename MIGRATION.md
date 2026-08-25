@@ -146,10 +146,12 @@ live site — worse than the Vercel setup it replaced.
 - [ ] Optional: transfer the domain to Cloudflare Registrar with the EPP code
       (at-cost renewals; current registration runs to 2027-03-11)
 - [ ] Optional: retire the Vercel project — nothing points at it now
-- [ ] Optional: fold in content the old site had and this one doesn't —
-      testimonials, phone number, office address, logo (`archive/old-site/`)
+- [x] Fold in content from the old site — testimonials added 2026-07-22; the
+      phone number turned out to be rendering already. Still unused in
+      `archive/old-site/`: the brush-circle logo and the office address (which
+      is in `contactInfo` but only shown in the footer).
 
-## Phase 5 — Decommission
+## Phase 6 — Decommission
 
 - [ ] Confirm cancellation state of the old plan (already actioned?) — nothing
       further needed once Phases 1–4 are green
